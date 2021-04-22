@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "fc385d5d-4f1a-41c6-a9e5-13b4a40b7d4f",
+		"name": "multi_workflow_1a_class",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Request 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.webjet.com.au/flights/australia/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"webjet",
+						"com",
+						"au"
+					],
+					"path": [
+						"flights",
+						"australia",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.webjet.com.au/flights/bangkok/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"webjet",
+						"com",
+						"au"
+					],
+					"path": [
+						"flights",
+						"bangkok",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.webjet.com.au/flights/canada/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"webjet",
+						"com",
+						"au"
+					],
+					"path": [
+						"flights",
+						"canada",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.webjet.com.au/flights/denmark/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"webjet",
+						"com",
+						"au"
+					],
+					"path": [
+						"flights",
+						"denmark",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.webjet.com.au/flights/egypt/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"webjet",
+						"com",
+						"au"
+					],
+					"path": [
+						"flights",
+						"egypt",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"postman.setNextRequest(getNextRequest());",
+					"",
+					"function getNextRequest() {",
+					"    let routes;",
+					"    if (Array.isArray(pm.globals.get(\"remainingRoutes\")) === true) {",
+					"        console.log(\"isArray-get-remainingRoutes\")",
+					"        routes = pm.globals.get(\"remainingRoutes\");",
+					"    } else {",
+					"        console.log(\"isArray-get-routes\")",
+					"        routes = pm.iterationData.get(\"routes\");",
+					"        // one_route.json",
+					"        // routes.json",
+					"    }",
+					"    ",
+					"    const nextRequest = routes.shift();",
+					"    pm.globals.set(\"remainingRoutes\", routes);",
+					"    ",
+					"    if (nextRequest === undefined) {",
+					"        console.log(\"nextRequest-undefined-clear-remainingRoutes\")",
+					"        pm.globals.clear(\"remainingRoutes\");",
+					"        return null;",
+					"    }",
+					"    ",
+					"    return nextRequest;",
+					"}"
+				]
+			}
+		}
+	]
+}
